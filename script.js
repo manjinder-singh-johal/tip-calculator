@@ -1,8 +1,20 @@
 let bill;
+let tipPercentage;
 
 const calculateTip = () => {
     bill = parseFloat(document.getElementById('bill').value);
-    const result = bill * (15 / 100);
+
+    if (document.getElementById('five').checked) {
+        tipPercentage = 5;
+    } else if (document.getElementById('ten').checked) {
+        tipPercentage = 10;
+    } else if (document.getElementById('fifteen').checked) {
+        tipPercentage = 15;
+    } else {
+        tipPercentage = 20;
+    }
+
+    const result = bill * (tipPercentage / 100);
 
     if (isNaN(result)) {
         document.getElementById('output').innerHTML = `Please enter a valid number and try again.`
